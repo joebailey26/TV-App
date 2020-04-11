@@ -1,15 +1,12 @@
 body {
   padding: 60px 90px;
+  padding-top: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: min-content 1fr;
-      grid-template-rows: -webkit-min-content 1fr;
-      grid-template-rows: min-content 1fr;
-      grid-template-areas: "nav"  "body";
   min-height: 100vh;
-  grid-gap: 2.5rem;
+  grid-gap: 1.5rem;
   font-size: 16px;
   color: #a9a9a9;
   background-color: #313131;
@@ -35,6 +32,17 @@ h1, h2, h3, h4, h5, h6, .inter {
 
 a {
   color: #a9a9a9;
+}
+
+.sticky {
+  display: -ms-grid;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  padding-top: 60px;
+  padding-bottom: 1rem;
+  top: 0;
+  background-color: #313131;
 }
 
 nav {
@@ -107,7 +115,6 @@ nav {
   display: -ms-grid;
   display: grid;
   grid-gap: 2rem;
-  margin-bottom: 2rem;
 }
 
 .details p {
@@ -178,5 +185,9 @@ h3 {
 
 h3:not(:first-of-type) {
   margin-top: 2.5rem;
+}
+
+h3:first-of-type {
+  margin-top: 0;
 }
 /*# sourceMappingURL=main.css.map */

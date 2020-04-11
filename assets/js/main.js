@@ -67,14 +67,15 @@ function moveInSectorToUp() {
                 document.querySelectorAll(".row")[i-1].classList.add("active")
                 e.classList.remove("active")
                 var y = 0
-                e.querySelectorAll(".item").forEach(function(e) {
-                    if (!e.classList.contains("active")) {
-                        y++
-                    } 
-                    else {
-                        e.classList.remove("active")
+                for (var f = 0; f < e.querySelectorAll(".item").length; f++) {
+                    if (e.querySelectorAll(".item")[f].classList.contains("active")) {
+                        e.querySelectorAll(".item")[f].classList.remove("active")
+                        break
                     }
-                })
+                    else {
+                        y++
+                    }
+                }
                 document.querySelectorAll(".row")[i-1].querySelectorAll(".item")[y].classList.add("active")
                 document.querySelectorAll(".row")[i-1].querySelectorAll(".item")[y].focus()
 

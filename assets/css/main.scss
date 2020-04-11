@@ -4,14 +4,12 @@ $teal: #0ce5e1;
 
 body {
     padding: 60px 90px;
+    padding-top: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
     display: grid;
-    grid-template-rows: min-content 1fr;
-    grid-template-areas: "nav" 
-                        "body";
     min-height: 100vh;
-    grid-gap: 2.5rem;
+    grid-gap: 1.5rem;
     font-size: 16px;
     color: $grey;
     background-color: $black;
@@ -31,6 +29,14 @@ h1, h2, h3, h4, h5, h6, .inter {
 }
 a {
     color: $grey;
+}
+.sticky {
+    display: grid;
+    position: sticky;
+    padding-top: 60px;
+    padding-bottom: 1rem;
+    top: 0;
+    background-color: $black;
 }
 nav {
     display: grid;
@@ -82,7 +88,6 @@ nav {
 .details {
     display: grid;
     grid-gap: 2rem;
-    margin-bottom: 2rem;
 }
 .details p {
     margin: 0;
@@ -135,7 +140,10 @@ nav {
 }
 h3 {
     color: white;
-}
-h3:not(:first-of-type) {
-    margin-top: 2.5rem;
+    &:not(:first-of-type) {
+        margin-top: 2.5rem;
+    }
+    &:first-of-type {
+        margin-top: 0;
+    }
 }
