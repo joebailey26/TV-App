@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Prototype</title>
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body class="loading play">
+    <div class="static-motion"></div>
+    <div class="sticky">
+        <nav class="row">
+            <a class="nav_item inter item" href="search.html">Search</a>
+            <a class="nav_item inter item" href="index.html">Home</a>
+            <a class="nav_item inter item" href="watchlist.html">Watchlist</a>
+            <a class="nav_item inter item" href="history.html">History</a>
+            <a class="nav_item inter item" href="settings.html">Settings</a>
+        </nav>
+    </div>
+    <main>
+        <div class="controls">
+            <i class="material-icons previous_icon">skip_previous</i>
+            <i class="material-icons rewind_icon">fast_rewind</i>
+            <i class="material-icons play_icon" onClick="if (this.innerHTML == 'play_arrow'){this.innerHTML = 'pause'} else {this.innerHTML = 'play_arrow'}">play_arrow</i>
+            <i class="material-icons forward_icon">fast_forward</i>
+            <i class="material-icons next_icon">skip_next</i>
+        </div>
+        <div class="timeline">
+            <span>00:19:13</span>
+            <span style="float: right;">01:06:19</span>
+            <hr>
+        </div>
+    </main>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

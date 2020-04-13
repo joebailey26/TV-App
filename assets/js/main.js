@@ -10,12 +10,15 @@ window.addEventListener("load", function(){
 
     document.addEventListener("keydown", (function(e) {
         switch(e.which) {
+            case 32: 
+                favorite();
+            break;
             case 37: // left
                 moveInSectorToLeft();
             break;
   
            case 38: // up
-                moveInSectorToUp(); //Dont know if you want to use it
+                moveInSectorToUp();
            break;
   
            case 39: // right
@@ -31,6 +34,15 @@ window.addEventListener("load", function(){
        e.preventDefault(); 
     }))
 })
+function favorite() {
+    if (document.querySelector("main").classList.contains("watchlist")) {
+        document.querySelector(".item.active").classList.add("none")
+        moveInSectorToRight()
+    }
+    else {
+        document.querySelector(".item.active").classList.add("favorite")
+    }
+}
 function moveInSectorToRight() {
     document.querySelector(".item.active").nextElementSibling.focus()
     document.querySelector(".item.active").nextElementSibling.classList.add("active")
@@ -100,55 +112,73 @@ function moveInSectorToDown() {
                     y++
                 }
             }
-            document.querySelector(".row.active").querySelectorAll(".item")[y].classList.add("active")
-            document.querySelector(".row.active").querySelectorAll(".item")[y].focus()
+            if (document.querySelectorAll(".nav_item.inter.item")[3].hasAttribute("aria-current")) {
+                document.querySelector(".row.active").querySelector(".item").classList.add("active")
+                document.querySelector(".row.active").querySelector(".item").focus()
+            }
+            else {
+                document.querySelector(".row.active").querySelectorAll(".item")[y].classList.add("active")
+                document.querySelector(".row.active").querySelectorAll(".item")[y].focus()
+            }
             break
         }
     }
     getActive()
 }
 function getActive() {
-    var active = document.querySelector(".item.active")
-    var title = active.dataset.title
-    var length = active.dataset.length
-    var rating = active.dataset.rating
-    var age = parseInt(active.dataset.age, 10)
-    var year = active.dataset.year
-    var desc = active.dataset.desc
-    var rate = ''
-    var ageColor = ''
-    var u = 0
+    if (document.getElementsByTagName("BODY")[0].classList.contains("home")) {
+        var active = document.querySelector(".item.active")
+        var title = active.dataset.title
+        var length = active.dataset.length
+        var rating = active.dataset.rating
+        var age = parseInt(active.dataset.age, 10)
+        var year = active.dataset.year
+        var desc = active.dataset.desc
+        var rate = ''
+        var ageColor = ''
+        var u = 0
 
-    for(i = 0; i < 5; i++) {
-        if (u < rating) {
-            rate = rate + '<i class="material-icons">grade</i>'
+        for(i = 0; i < 5; i++) {
+            if (u < rating) {
+                rate = rate + '<i class="material-icons">grade</i>'
+            }
+            else {
+                rate = rate + '<i class="material-icons outline">grade</i>'
+            }
+            u++
+        }
+
+        if (age >= 15) {
+            ageColor = "red"
+        }
+        if (active.dataset.img) {
+            var img = `<div class="imgContainer"><img src="${active.dataset.img}"/></div>`
         }
         else {
-            rate = rate + '<i class="material-icons outline">grade</i>'
+            var img = ''
         }
-        u++
+        document.querySelector(".details").classList.add("loading")
+        setTimeout(
+            function() {
+            document.querySelector(".details").innerHTML = `
+                ${img}
+                <h2 class="title">${title}</h2>
+                <div class="info">
+                    <div class="length">
+                        ${length}
+                    </div>
+                    <div class="rating">
+                        ${rate}
+                    </div>
+                    <div class="age ${ageColor}">
+                        ${age}
+                    </div>
+                    <div class="year">
+                        ${year}
+                    </div>
+                </div>
+                <p>${desc}</p>`
+                document.querySelector(".details").classList.remove("loading")}, 
+            500)
     }
-
-    if (age >= 15) {
-        ageColor = "red"
-    }
-
-    document.querySelector(".details").innerHTML = `
-        <h2 class="title">${title}</h2>
-        <div class="info">
-            <div class="length">
-                ${length}
-            </div>
-            <div class="rating">
-                ${rate}
-            </div>
-            <div class="age ${ageColor}">
-                ${age}
-            </div>
-            <div class="year">
-                ${year}
-            </div>
-        </div>
-        <p>${desc}</p>
-    `
 }
