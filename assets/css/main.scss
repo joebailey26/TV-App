@@ -256,6 +256,9 @@ h3 {
     }
 }
 .play {
+    .nav_item[aria-current] {
+        color: $grey
+    }
     background-image: url("../img/play.jpg");
     background-size: cover;
     color: white;
@@ -264,7 +267,7 @@ h3 {
         opacity: 0;
         transition: 1s;
     }
-    &:focus *, &:hover * {
+    &:focus *, &:hover *, &.act * {
         opacity: 1;
     }
     .sticky {
@@ -281,11 +284,28 @@ h3 {
         width: calc(100% + 180px);
         margin-left: -90px;
         margin-right: -90px;
+        display: grid;
         .controls {
             text-align: center;
             padding-bottom: 2rem;
             i {
                 font-size: 60px;
+            }
+        }
+        .row {
+            grid-template-rows: auto;
+            grid-gap: 1rem;
+            justify-self: center;
+        }
+        .item {
+            border: 4px solid rgba(0,0,0,0);
+            transition: none;
+            &.active {
+                border: 4px solid $teal;
+                z-index: 0;
+                &.favorite:before {
+                    opacity: 0;
+                }
             }
         }
     }
@@ -299,9 +319,6 @@ h3 {
         padding-top: 0;
         h2 {
             font-size: 2rem;
-        }
-        p {
-
         }
     }
 }

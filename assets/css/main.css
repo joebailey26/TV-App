@@ -334,13 +334,17 @@ h3:first-of-type {
       align-content: space-between;
 }
 
+.play .nav_item[aria-current] {
+  color: #a9a9a9;
+}
+
 .play * {
   opacity: 0;
   -webkit-transition: 1s;
   transition: 1s;
 }
 
-.play:focus *, .play:hover * {
+.play:focus *, .play:hover *, .play.act * {
   opacity: 1;
 }
 
@@ -359,6 +363,8 @@ h3:first-of-type {
   width: calc(100% + 180px);
   margin-left: -90px;
   margin-right: -90px;
+  display: -ms-grid;
+  display: grid;
 }
 
 .play main .controls {
@@ -368,6 +374,29 @@ h3:first-of-type {
 
 .play main .controls i {
   font-size: 60px;
+}
+
+.play main .row {
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  grid-gap: 1rem;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.play main .item {
+  border: 4px solid rgba(0, 0, 0, 0);
+  -webkit-transition: none;
+  transition: none;
+}
+
+.play main .item.active {
+  border: 4px solid #0ce5e1;
+  z-index: 0;
+}
+
+.play main .item.active.favorite:before {
+  opacity: 0;
 }
 
 .settings .info {
