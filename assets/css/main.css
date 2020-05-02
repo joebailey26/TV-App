@@ -154,21 +154,16 @@ main .item.active.favorite:before {
   place-items: center;
 }
 
-.title {
-  color: white;
-  margin: 0;
-}
-
 .info div {
   padding: 0 1rem;
 }
 
-.length, .year {
+.info .length, .info .year {
   border: 2px solid #a9a9a9;
   margin: -2px 0;
 }
 
-.age {
+.info .age {
   padding: 0 !important;
   border-radius: 50%;
   background-color: #FFCC4A;
@@ -178,11 +173,11 @@ main .item.active.favorite:before {
   color: white;
 }
 
-.red {
+.info .red {
   background-color: #FF5252;
 }
 
-.rating {
+.info .rating {
   padding: 0 !important;
   color: #FFCC4A;
   width: calc((1.5rem * 5) + 1rem);
@@ -192,8 +187,13 @@ main .item.active.favorite:before {
   grid-auto-flow: column;
 }
 
-.rating .outline {
+.info .rating .outline {
   color: #a9a9a9;
+}
+
+.title {
+  color: white;
+  margin: 0;
 }
 
 h3 {
@@ -414,6 +414,7 @@ h3:first-of-type {
 }
 
 .static-motion {
+  text-align: center;
   position: absolute;
   left: 0;
   right: 0;
@@ -429,5 +430,9 @@ h3:first-of-type {
 .static-motion.hidden {
   opacity: 0;
   z-index: -1;
+}
+
+.static-motion img {
+  margin-top: calc(50vh - 150px);
 }
 /*# sourceMappingURL=main.css.map */
