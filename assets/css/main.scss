@@ -66,10 +66,10 @@ nav {
     display: grid;
     align-content: center;
     transition: 0.5s;
-}
-.item.active {
-    transition: 0.5s;
-    border: 4px solid $teal;
+    &.active {
+        transition: 0.5s;
+        border: 4px solid $teal;
+    }
 }
 main {
     .item.active {
