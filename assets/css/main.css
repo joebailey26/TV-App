@@ -242,7 +242,6 @@ h3:first-of-type {
 .history {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "sidebar main";
   -ms-grid-columns: 360px 1fr;
       grid-template-columns: 360px 1fr;
   grid-gap: 2rem;
